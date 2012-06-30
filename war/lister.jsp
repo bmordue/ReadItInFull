@@ -4,7 +4,6 @@
 <head>
 <title>Read It In Full</title>
 
-<!-- load jQuery and jQueryUI from Google's content delivery network -->
 <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAA9l3qy-cONBbRT9UC7zeCSRRQGDklHMpeozCb8OrviK90TAIg_hS9P02k2kBczOAoOjD565m_bTaDmA"></script>
 <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
@@ -33,9 +32,6 @@ $(document).ready(function() {
 
 <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.10.custom.css" rel="Stylesheet" />	
 
-
-<%@ taglib prefix="mytest" uri="http://www.tomcat-demo.com/testing"%>
-
 </head>
 <body>
 <%@ page import="twitter4j.Twitter" %>
@@ -43,15 +39,8 @@ $(document).ready(function() {
 <%@ page import="twitter4j.User" %>
 <%@ page import="twitter4j.AccountTotals" %>
 
-
-
 <%@ page import="java.util.List" %>
 
-<p>Test block</p>
-<mytest:listattr />
-<p>End test block</p>
-
-<mytest:twauth />
 
 <%
 	Twitter twitter = (Twitter) session.getAttribute("twitter");
