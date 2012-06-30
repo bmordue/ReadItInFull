@@ -5,8 +5,10 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="java.util.List" %>
 <%@ page import="javax.jdo.PersistenceManager" %>
-<%@ page import="me.benmordue.readitinfull.PMF" %>
-<%@ page import="me.benmordue.readitinfull.ReadItUser" %>
+<%@ page import="me.benmordue.gaetest.PMF" %>
+<%@ page import="me.benmordue.gaetest.ReadItUser" %>
+
+<%@ taglib prefix="mytest" uri="http://www.tomcat-demo.com/testing"%>
 
 
 
@@ -18,6 +20,11 @@
 </head>
 <body>
 
+
+<p>Test block</p>
+<mytest:listattr />
+<p>End of test block</p>
+
 <%
     
     ReadItUser myUser = (ReadItUser) session.getAttribute("readItUser");
@@ -26,6 +33,7 @@
 %>
 <p>Hello, <%= myUser.getTwitterScreenName() %>! (You can
 <a href="/logout">sign out</a>.)</p>
+<p>See your list of favourites <a href="lister.jsp">here</a>.</p>
 <%
     } else {
 %>
