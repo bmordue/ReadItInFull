@@ -46,12 +46,6 @@ public class ReadItUser implements java.io.Serializable {
 		AccessToken twitterAccessToken;
 		
 	    @Persistent
-		private String twitterAccessTokenString;
-
-	    @Persistent
-		private String twitterAccessTokenVerifier;
-	    
-	    @Persistent
 		private String instapaperUsername;
 		
 		//TODO: better security for Instapaper password
@@ -82,9 +76,6 @@ public class ReadItUser implements java.io.Serializable {
 
 			this.twitterAccessToken = twitterAccessToken;
 			
-			this.twitterAccessTokenString = twitterAccessToken.getToken();
-			this.twitterAccessTokenVerifier = twitterAccessToken.getTokenSecret();
-			
 			this.instapaperUsername = instapaperUsername;
 			
 			//takes care of Base64 encoding to hide password
@@ -113,9 +104,6 @@ public class ReadItUser implements java.io.Serializable {
 		 */
 		public void setTwitterAccessToken(AccessToken twitterAccessToken) {
 			this.twitterAccessToken = twitterAccessToken;
-			
-			this.twitterAccessTokenString = twitterAccessToken.getToken();
-			this.twitterAccessTokenVerifier = twitterAccessToken.getTokenSecret();
 			
 			//does this make twitterScreenName and twitterUserId members redundant?
 			//don't think so, cos we could get screenName/userId before access token
