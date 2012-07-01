@@ -81,19 +81,19 @@ sending to Instapaper?</input><br />
 <input type=submit value="Send"> <br />
 
 <!--   <p><a href='#' id='hidenames'></p>Hide user names</p></a> -->
+<fieldset>
 <table class='pageme'>
 <thead><tr>
-<th>User</th><th>Link</th><th>Tweet</th>
+<th>User</th><th><input type="checkbox" class="checkall" /> Select all</th><th>Tweet</th>
 </tr></thead>
 <tbody id='rows'>
 <tr><td>Loading...</td></tr>
 </tbody>
 </table>
 </form>
+</fieldset>
 
 <!-- Paging for table of Twitter favourites -->
-<fieldset>
-<div><input type="checkbox" class="checkall"> Select all</div>
  
 <%
 int maxPage = totals.getFavorites()/20;
@@ -101,7 +101,6 @@ for (int i=0;i<maxPage;i++) {
 	%><a class="pageno" href="#"><%=i+1 %></a>&nbsp;   <% 
 }
 %>
-</fieldset>
 
 
 <!-- If user is not correctly logged in: -->
