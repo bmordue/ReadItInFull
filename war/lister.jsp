@@ -9,9 +9,6 @@
 <script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 
 
-<!-- Paging plugin -->
-<script type="text/javascript" src="js/jquery.tablePagination.0.2.js"></script>
-
 <!-- jQuery stuff -->
 <script type="text/javascript">
 $(document).ready(function() {
