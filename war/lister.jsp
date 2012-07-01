@@ -87,12 +87,17 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="fourcol">
+
+			<div class="sixcol">
+
 				<h3><%=user.getName()%>, you have
 					<%=totals.getFavorites()%>
 					favourites
 				</h3>
 			</div>
+		</div>
+
+		<div class="row">
 			<div class="fourcol">
 				<ol>
 					<li>Select articles to send to Instapaper.</li>
@@ -107,11 +112,16 @@
 					Instapaper username: <input type=text name="username" /> <br />
 					Instapaper password: <input type=password name="password" /> <br />
 					<!--   <input type=checkbox name='remember'>Remember Instapaper password?</input><br />-->
-					<input type=checkbox name='removefavourites'>Remove Twitter
-					favourites after sending to Instapaper?</input><br />
+					<input type=checkbox name='removefavourites' />Remove Twitter
+					favourites after sending to Instapaper?<br />
 			</div>
+	</div><!-- row -->
+</div><!-- container -->		
+
 			<input type=submit value="Send" /> <br />
 			<!--   <p><a href='#' id='hidenames'></p>Hide user names</p></a> -->
+			
+			
 			<fieldset>
 				<table class='pageme'>
 					<thead>
