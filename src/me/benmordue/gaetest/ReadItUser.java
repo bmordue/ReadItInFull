@@ -25,7 +25,6 @@ public class ReadItUser implements java.io.Serializable {
 
 
 		/**
-	 * 
 	 */
 	private static final long serialVersionUID = 7202668824812260051L;
 

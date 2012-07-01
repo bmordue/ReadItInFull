@@ -25,6 +25,13 @@ $(document).ready(function() {
 
 	$('.pageno').click(function() { $('tbody#rows').load('/list?page='+$(this).text());} );
 	
+	//checkbox to select all, from http://briancray.com/posts/check-all-jquery-javascript/
+	$(function () {
+	    $('.checkall').click(function () {
+	        $(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', this.checked);
+	    });
+	});
+	
 	 });	//document ready
 
 </script>
@@ -85,13 +92,16 @@ sending to Instapaper?</input><br />
 </form>
 
 <!-- Paging for table of Twitter favourites -->
+<fieldset>
+<div><input type="checkbox" class="checkall"> Select all</div>
+ 
 <%
 int maxPage = totals.getFavorites()/20;
 for (int i=0;i<maxPage;i++) {
 	%><a class="pageno" href="#"><%=i+1 %></a>&nbsp;   <% 
 }
 %>
-
+</fieldset>
 
 
 <!-- If user is not correctly logged in: -->

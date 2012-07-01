@@ -5,10 +5,6 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
-		<servlet-name>GAETest</servlet-name>
-		<servlet-class>me.benmordue.gaetest.GAETestServlet</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>me.benmordue.gaetest.LoginServlet</servlet-class>
 	</servlet>
