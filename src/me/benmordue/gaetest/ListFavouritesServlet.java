@@ -3,12 +3,14 @@ package me.benmordue.gaetest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -21,6 +23,7 @@ public class ListFavouritesServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 3630302006242080561L;
 
+    private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
 
 
 	/* (non-Javadoc)
@@ -47,11 +50,20 @@ public class ListFavouritesServlet extends HttpServlet {
 	
 	public void writePage(Twitter twitter, int page, PrintWriter writer) {
 
+		logger.info("writePage(), page is " + Integer.toString(page));
+		
 		try {
 			List<Status> statuses;
 			URLEntity[] urlArray = null;
-
-			statuses = twitter.getFavorites(page);
+			
+			// Paging constructor must be passed a positive integer
+			if (page == 0) {
+				statuses = twitter.getFavorites();
+			} else {
+				Paging paging = new Paging(page);
+				statuses = twitter.getFavorites(paging);
+			}
+			
 			for (Status status : statuses) {
 				writer.write("<tr class='favorite'>");
 				writer.write("<td class='name'>@"
@@ -94,6 +106,8 @@ public class ListFavouritesServlet extends HttpServlet {
 			//e.printStackTrace()
 		}
 
+		
+		logger.info("Finished writePage() for page " + Integer.toString(page));
 	}
 
 	/* (non-Javadoc)

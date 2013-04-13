@@ -8,11 +8,11 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import twitter4j.AccountTotals;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.URLEntity;
+import twitter4j.User;
 
 public class ListFavouritesTag extends TagSupport {
 
@@ -41,10 +41,10 @@ public class ListFavouritesTag extends TagSupport {
 		} else {
 
 			try {
+				User user = twitter.verifyCredentials();
+				int favouritesCount = user.getFavouritesCount();
 
-				AccountTotals totals = twitter.getAccountTotals();
-
-				int maxPage = totals.getFavorites() / 20;
+				int maxPage = favouritesCount / 20;
 
 				for (int i = 0; i < maxPage; i++) {
 					writePage(twitter, 0, writer);

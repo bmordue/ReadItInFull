@@ -22,7 +22,11 @@ public class HomeServlet extends HttpServlet {
 //	private static final String OAUTH_KEY = "Mh4cpA1NhsrFo1RSuSNw";
 //	private static final String OAUTH_SECRET = "sJ0lYu4UCUVzWMvk42oOB9bkd1dFPKyBuDLzuShJk";
 
-    private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6948322944992560586L;
+	private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
 
 	
 	/* (non-Javadoc)

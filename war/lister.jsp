@@ -58,10 +58,9 @@ $(document).ready(function() {
 		}
 	}
     if (user != null) {
-	AccountTotals totals = twitter.getAccountTotals();
-
+    	int favouritesCount = user.getFavouritesCount();
 %>
-<h3><%= user.getName() %>, you have <%=totals.getFavorites() %> favourites</h3>
+<h3><%= user.getName() %>, you have <%=favouritesCount %> favourites</h3>
 
 
 <ol>
@@ -73,8 +72,8 @@ $(document).ready(function() {
 Instapaper username: <input type=text name="username" /> <br/>
 Instapaper password: <input type=password name="password" /> <br />
 <!--   <input type=checkbox name='remember'>Remember Instapaper password?</input><br />-->
-<input type=checkbox name='removefavourites'>Remove Twitter favourites after
-sending to Instapaper?</input><br />
+<input type=checkbox name='removefavourites' />Remove Twitter favourites after
+sending to Instapaper?<br />
 <input type=submit value="Send"> <br />
 
 <!--   <p><a href='#' id='hidenames'></p>Hide user names</p></a> -->
@@ -87,13 +86,14 @@ sending to Instapaper?</input><br />
 <tr><td>Loading...</td></tr>
 </tbody>
 </table>
-</form>
 </fieldset>
+</form>
+
 
 <!-- Paging for table of Twitter favourites -->
  
 <%
-int maxPage = totals.getFavorites()/20;
+int maxPage = favouritesCount/20;
 for (int i=0;i<maxPage;i++) {
 	%><a class="pageno" href="#"><%=i+1 %></a>&nbsp;   <% 
 }
