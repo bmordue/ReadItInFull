@@ -3,6 +3,7 @@ package me.benmordue.gaetest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -106,21 +107,26 @@ public class SendServlet extends HttpServlet {
 					HttpURLConnection connect = (HttpURLConnection) full
 							.openConnection();
 
-					String result = (connect.getResponseCode() == 201 ? "OK"
-							: "Not OK :-(");
+					int respCode = connect.getResponseCode();
+					
+					String result = (respCode == 201 ? "OK"
+							: "Not OK: " + Integer.toString(respCode));
 					pw.println(article + " sent to Instapaper. Response: "
 							+ result + "<br />");
 
 					// Remove favourite
 					// Only remove favourite if article was successfully saved
 					// to Instapaper
-					if (removeFavourites && (connect.getResponseCode() == 201)) {
+					if (removeFavourites && (respCode == 201)) {
 						twitter.destroyFavorite(favouriteId);
 					}
 				} catch (TwitterException e) {
 					e.printStackTrace();
 				}
 				catch (IllegalStateException e) {
+					e.printStackTrace();
+				}
+				catch (SocketTimeoutException e) {
 					e.printStackTrace();
 				}
 				catch (Exception e){
