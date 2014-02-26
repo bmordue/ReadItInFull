@@ -22,12 +22,19 @@ $(document).ready(function() {
 
 	$('.pageno').click(function() { $('tbody#rows').load('/list?page='+$(this).text());} );
 	
-	//checkbox to select all, from http://briancray.com/posts/check-all-jquery-javascript/
+	//link to select all, adapted from http://briancray.com/posts/check-all-jquery-javascript/
 	$(function () {
 	    $('.checkall').click(function () {
-	        $(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', this.checked);
+	        $(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', true);
 	    });
 	});
+	
+	$(function () {
+	    $('.checknone').click(function () {
+	        $(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', false);
+	    });
+	});
+
 	
 	 });	//document ready
 
@@ -80,7 +87,7 @@ sending to Instapaper?<br />
 <fieldset>
 <table class='pageme'>
 <thead><tr>
-<th>User</th><th><input type="checkbox" class="checkall" /> Select all</th><th>Tweet</th>
+<th>User</th><th>Select <a class="checkall" href='#'>all</a> | <a class="checknone" href='#'>none</a><th>Tweet</th>
 </tr></thead>
 <tbody id='rows'>
 <tr><td>Loading...</td></tr>
