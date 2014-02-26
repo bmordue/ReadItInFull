@@ -44,6 +44,8 @@ public class LoginServlet extends HttpServlet {
 
 		RequestDispatcher rd = null;
 		
+		String twitterAuthUrl = "";
+		
 		Twitter twitter = new TwitterFactory(cb.build()).getInstance();
 		twitter.setOAuthConsumer(OAUTH_KEY, OAUTH_SECRET);
 		RequestToken requestToken = null;
@@ -72,15 +74,19 @@ public class LoginServlet extends HttpServlet {
 			logger.info("twitter.getOAuthRequestToken() threw a TwitterException.");
 			logger.warning(e.toString());
 
-			//try again
-			//TODO: better way to handle this??
-			rd = req.getRequestDispatcher("/login");
+			//show failure page
+			rd = req.getRequestDispatcher("/failure.html");
 		}
 	
-		//forward to login.jsp if successful; retry /login if not
-		//TODO: is there a better way to handle this??
+		//forward to login.jsp if successful; failure.html if not
+		try {
+			twitterAuthUrl = (String) req.getAttribute("authUrl");
+		} catch (Exception e) {
+			e.printStackTrace();
+			rd = req.getRequestDispatcher("/failure.html");
+		}
+		
 		rd.forward(req, resp);
-
 	}
 
 }

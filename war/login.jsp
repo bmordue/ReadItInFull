@@ -1,4 +1,5 @@
 <html><body>
-<a href='<%=request.getAttribute("authUrl") %>'>Authorise using Twitter</a>
+
+<a href='<%=twitterAuthUrl %>'>Authorise using Twitter</a>
 
 </body></html>
